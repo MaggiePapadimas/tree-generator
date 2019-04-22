@@ -14,22 +14,47 @@ window.addEventListener('resize', function(){
 	camera.updateProjectionMatrix();
 
 });
-var line0 = MakeLine3D(new THREE.Vector3(0,0,0), new THREE.Vector3(0,10,1));
-var line1 = MakeLine3D(new THREE.Vector3(0,0,0), new THREE.Vector3(10,1,0));
+var perp = new THREE.Vector3(0,0,1);
+camera.position.z = 50;
+camera.position.y = 20;
+var lines = []
 
-scene.add( line0 );
-scene.add( line1 );
-//scene.add(cube);
-camera.position.z = 30;
+
+function Branch(len, dir, rotation, start, num){
+	var end = new THREE.Vector3(start.x, start.y, start.z);
+	end.addScaledVector (dir, len);
+	lines.push(MakeLine3D(start, end, 0.15));;
+	if(num > 0){
+		len *= 0.67;
+		num--;
+		var v0 = new THREE.Vector3(dir.x, dir.y, dir.z);
+		var v1 = new THREE.Vector3(dir.x, dir.y, dir.z);
+
+		v0.applyAxisAngle(perp, rotation);
+		v1.applyAxisAngle(perp, -rotation);
+		v0.normalize();
+		v1.normalize();
+
+		Branch(len, v0, rotation, end, num);
+		Branch(len, v1, rotation, end, num);
+	}
+}
+
+Branch(20, new THREE.Vector3(0,1,0), 3.141592/3, new THREE.Vector3(0,-1,0), 8);
+
+
+for(var i = 0; i < lines.length; ++i){
+
+	scene.add( lines[i] );
+
+}
 //logic
 var update = function(){
-	line0.rotation.x += 0.01;
-	line0.rotation.y += 0.001;
-	line0.rotation.z += 0.0001;
+	for(var i = 0; i < lines.length; ++i){
 
-	line1.rotation.y += 0.01;
-	line1.rotation.z += 0.001;
-	line1.rotation.x += 0.0001;
+		lines[i].rotation.y += 0.01;
+	}
+
 };
 // draws scene
 var render = function(){
