@@ -14,18 +14,22 @@ window.addEventListener('resize', function(){
 	camera.updateProjectionMatrix();
 
 });
+var line0 = MakeLine3D(new THREE.Vector3(0,0,0), new THREE.Vector3(0,10,1));
+var line1 = MakeLine3D(new THREE.Vector3(0,0,0), new THREE.Vector3(10,1,0));
 
-
-var geom = new THREE.BoxGeometry(1,1,1);
-var mat = new THREE.MeshBasicMaterial( {color : 0xFFFFFF, wireframe : false});
-var cube = new THREE.Mesh(geom, mat);
-scene.add(cube);
-camera.position.z = 3;
+scene.add( line0 );
+scene.add( line1 );
+//scene.add(cube);
+camera.position.z = 30;
 //logic
 var update = function(){
-	cube.rotation.x += 0.01;
-	cube.rotation.y += 0.001;
-	cube.rotation.z += 0.0001;
+	line0.rotation.x += 0.01;
+	line0.rotation.y += 0.001;
+	line0.rotation.z += 0.0001;
+
+	line1.rotation.y += 0.01;
+	line1.rotation.z += 0.001;
+	line1.rotation.x += 0.0001;
 };
 // draws scene
 var render = function(){
