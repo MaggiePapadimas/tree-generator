@@ -1,3 +1,6 @@
+var xSlider;
+var ySlider;
+var zSlider;
 var viewer;
 function setup(){
 	// set up viewer
@@ -22,6 +25,14 @@ function setup(){
 	var floorMesh = new THREE.Mesh(floorGeom, floorMat);
 	floorMesh.position.y = -15
 	viewer.AddMesh( floorMesh );
+
+	// create sliders
+	xSlider = createSlider(0, 255, 100);
+	xSlider.position(20, 20);
+	ySlider = createSlider(0, 255, 0);
+	ySlider.position(20, 50);
+	zSlider = createSlider(0, 255, 255);
+	zSlider.position(20, 80);
 }
 
 
@@ -51,4 +62,12 @@ function draw(){
 	if(keyIsDown(16)){
 		viewer.camera.position.y--;
 	}
+
+	const x = xSlider.value();
+	const y = ySlider.value();
+	const z = zSlider.value();
+	console.log(x);
+	console.log(y);
+	console.log(z);
+
 }
