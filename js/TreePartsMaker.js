@@ -19,7 +19,8 @@ LineCurve.prototype.getPoint = function ( t ) {
 
 var woodMat = new THREE.MeshLambertMaterial( { color: new THREE.Color("rgb(110, 58, 36)")  } );
 var leafMat = new THREE.MeshLambertMaterial( { color: new THREE.Color("rgb(58, 95, 11)")  } );
-// This function makes a line between start and end
+
+// This function makes a branch part
 function MakeBranch(start, end, radius){
 
   var path = new LineCurve(start, end);
@@ -31,7 +32,7 @@ function MakeBranch(start, end, radius){
   return new THREE.Mesh( geometry, woodMat );
 }
 
-
+// this funciton makes a leaf part
 function MakeLeaf(pos, size){
 
 	//var geometry = new THREE.BoxGeometry( size, size, size);

@@ -5,8 +5,10 @@ function Viewer3D(){
 
 
   this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1 , 1000);
-  this.renderer = new THREE.WebGLRenderer();
+  this.renderer = new THREE.WebGLRenderer( {alpha : true});
   this.renderer.setSize (window.innerWidth, window.innerHeight);
+  this.renderer.setClearColor( new THREE.Color(0x87CEEB) , 1);
+
   document.body.appendChild(this.renderer.domElement);
 
   // if the window is resized, this function is called to rescale the viewport so that the image isnt streched
@@ -25,9 +27,6 @@ function Viewer3D(){
 
 // this rotates the meshes and updates the frame
 Viewer3D.prototype.UpdateFrame = function () {
-	for(var i = 0; i < this.meshes.length; ++i){
-	   this.meshes[i].rotation.y += 0.01;
-	}
   this.renderer.render(this.scene, this.camera);
 };
 

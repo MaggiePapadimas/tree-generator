@@ -3,7 +3,7 @@ new p5();
 
 // this will generate the tree right away
 function TreeMaker(iterations, length){
-	this.leafSize = 3;
+	this.leafSize = 21 / iterations;
 	this.leafLength = 1;
 	this.branches = [];
 	this.leaves = [];

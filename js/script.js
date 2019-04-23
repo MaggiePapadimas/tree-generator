@@ -4,11 +4,11 @@ function setup(){
 	viewer = new Viewer3D();
 
 	// make the tree
-	var	tree = new TreeMaker(7,20);
+	var	tree = new TreeMaker(6,20);
 	viewer.AddMesh(tree.root);
 
 	var light = new THREE.AmbientLight( 0x909090 ); //white light
-	// White directional 
+	// White directional
 	var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.7);
 	directionalLight.position.x = 1;
 	directionalLight.position.y = 1;
@@ -16,6 +16,12 @@ function setup(){
 
 	viewer.scene.add( directionalLight );
 	viewer.scene.add( light );
+
+	var floorMat = new THREE.MeshBasicMaterial( { color: new THREE.Color("rgb(52, 120, 36)")  } );
+	var floorGeom = new THREE.BoxGeometry( 2000, 30, 2000);
+	var floorMesh = new THREE.Mesh(floorGeom, floorMat);
+	floorMesh.position.y = -15
+	viewer.AddMesh( floorMesh );
 }
 
 
@@ -24,6 +30,7 @@ function draw(){
 
 	// update the viewer
 	viewer.UpdateFrame();
+	viewer.meshes[0].rotation.y += 0.01;
 
 	//movement
 	if(keyIsDown(83)){
