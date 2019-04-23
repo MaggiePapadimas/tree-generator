@@ -2,6 +2,8 @@
 function Viewer3D(){
   this.meshes = [];
   this.scene = new THREE.Scene();
+
+
   this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1 , 1000);
   this.renderer = new THREE.WebGLRenderer();
   this.renderer.setSize (window.innerWidth, window.innerHeight);
@@ -18,7 +20,7 @@ function Viewer3D(){
 
 // start with the camera slighlty back so that the origin can be viewed
   this.camera.position.z = 100;
-  this.camera.position.y = 20;
+  this.camera.position.y = 30;
 }
 
 // this rotates the meshes and updates the frame

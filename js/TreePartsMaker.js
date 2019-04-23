@@ -17,8 +17,10 @@ LineCurve.prototype.getPoint = function ( t ) {
   return vec;
 };
 
+var woodMat = new THREE.MeshLambertMaterial( { color: new THREE.Color("rgb(110, 58, 36)")  } );
+var leafMat = new THREE.MeshLambertMaterial( { color: new THREE.Color("rgb(58, 95, 11)")  } );
 // This function makes a line between start and end
-function MakeLine3D(start, end, radius){
+function MakeBranch(start, end, radius){
 
   var path = new LineCurve(start, end);
 	var sides;
@@ -26,6 +28,19 @@ function MakeLine3D(start, end, radius){
 	else if(radius > 0.2) sides = 5;
 	else sides = 3;
   var geometry = new THREE.TubeGeometry( path, 1, radius, sides, false );
-  var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-  return new THREE.Mesh( geometry, material );
+  return new THREE.Mesh( geometry, woodMat );
+}
+
+
+function MakeLeaf(pos, size){
+
+	//var geometry = new THREE.BoxGeometry( size, size, size);
+	var geometry = new THREE.IcosahedronGeometry(size);
+
+
+	var mesh = new THREE.Mesh(geometry, leafMat);
+	mesh.position.x = pos.x;
+	mesh.position.y = pos.y;
+	mesh.position.z = pos.z;
+	return mesh;
 }
