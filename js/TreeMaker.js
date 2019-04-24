@@ -2,8 +2,9 @@ new p5();
 
 
 // this will generate the tree right away
-function TreeMaker(iterations, length, thickness, split, leafSize){
-	console.log(split);
+function TreeMaker(iterations, length, thickness, branches, split, leafSize){
+	console.log(branches);
+	this.branches = branches;
 	this.split = split;
 	this.rotation = PI / 8;
 	this.leafSize = leafSize / iterations;
@@ -62,9 +63,8 @@ TreeMaker.prototype.Branch = function(ite, len, thickness, dir, start){
 			v1.normalize();
 
 			this.Branch(ite, len, thickness * 0.67, v0, end );
-			this.Branch(ite, len, thickness * 0.67, v1, end );
-
-			this.Branch(ite, len, thickness * 0.8, dir, end );
+			if( this.branches > 1 ) this.Branch(ite, len, thickness * 0.67, v1, end );
+			if( this.branches > 2 ) this.Branch(ite, len, thickness * 0.8, dir, end );
 		}
 	}
 	else{

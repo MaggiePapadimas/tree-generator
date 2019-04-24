@@ -5,6 +5,7 @@ var initialThickness;
 var rotation;
 var split;
 var leafSize;
+var branches;
 
 var newTreeButton;
 var resetButton;
@@ -20,12 +21,14 @@ function setup(){
 	initialThickness = createSlider(0.1, 5, 2, 0);
 	split = createSlider(0.01, PI, PI / 2, 0);
 	leafSize = createSlider(1, 100, 21, 1);
+	branches = createSlider(1, 3, 3, 1);
 
 	iterations.position(20, 0);
 	initialBranchLength.position(20, 21);
 	initialThickness.position(20, 42);
 	split.position(20, 63);
 	leafSize.position(20, 84);
+	branches.position(200, 84);
 
 	newTreeButton = createButton("New Tree");
 	newTreeButton.position(200,20);
@@ -45,6 +48,7 @@ function DefaultParameters(){
 	initialThickness.value(2);
 	split.value(PI / 2);
 	leafSize.value(21);
+	branches.value(3);
 }
 // calls the viewr to update and manages moving around (in/out and pan)
 function draw(){
@@ -80,7 +84,7 @@ function draw(){
 function NewTree(){
 	viewer.ResetCamera();
 	// make the tree
-	var	tree = new TreeMaker(iterations.value(),initialBranchLength.value(), initialThickness.value(),split.value(), leafSize.value());
+	var	tree = new TreeMaker(iterations.value(),initialBranchLength.value(), initialThickness.value(), branches.value(), split.value(), leafSize.value());
 	viewer.NewScene();
 	viewer.AddMesh(tree.root);
 
