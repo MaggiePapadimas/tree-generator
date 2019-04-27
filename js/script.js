@@ -13,6 +13,7 @@ var resetButton;
 
 function setup(){
 	// set up viewer
+	createCanvas(500,100);
 	viewer = new Viewer3D();
 
 	// create sliders
@@ -23,19 +24,19 @@ function setup(){
 	leafSize = createSlider(1, 100, 21, 1);
 	branches = createSlider(1, 3, 3, 1);
 
-	iterations.position(20, 0);
-	initialBranchLength.position(20, 21);
-	initialThickness.position(20, 42);
-	split.position(20, 63);
-	leafSize.position(20, 84);
-	branches.position(200, 84);
+	iterations.position(100, 0);
+	initialBranchLength.position(100, 21);
+	initialThickness.position(100, 42);
+	split.position(100, 63);
+	leafSize.position(100, 84);
+	branches.position(400, 84);
 
 	newTreeButton = createButton("New Tree");
-	newTreeButton.position(200,20);
+	newTreeButton.position(400,20);
 	newTreeButton.mouseClicked(NewTree);
 
 	resetButton = createButton("Default");
-	resetButton.position(200,50);
+	resetButton.position(400,50);
 	resetButton.mouseClicked(DefaultParameters);
 
 	NewTree();
@@ -55,6 +56,13 @@ function draw(){
 
 	// update the viewer
 	viewer.UpdateFrame();
+	text("Iterations", 10,15);
+	text("branch Length", 10,35);
+	text("Thickness", 10,55);
+	text("Split Angle", 10,75);
+	text("Leaf Size", 10,95);
+	text("Branches Per Split", 275,95);
+
 	for(var i = 0; i < viewer.meshes.length;++i){
 
 		viewer.meshes[i].rotation.y += 0.01;
