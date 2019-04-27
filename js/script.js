@@ -17,7 +17,7 @@ function setup(){
 	viewer = new Viewer3D();
 
 	// create sliders
-	iterations = createSlider(1, 8, 2, 1);
+	iterations = createSlider(1, 8, 6, 1);
 	initialBranchLength = createSlider(2, 100, 20, 0);
 	initialThickness = createSlider(0.1, 5, 2, 0);
 	split = createSlider(0.01, PI, PI / 2, 0);
