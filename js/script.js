@@ -13,11 +13,11 @@ var resetButton;
 
 function setup(){
 	// set up viewer
-	createCanvas(500,100);
+	createCanvas(900,100);
 	viewer = new Viewer3D();
 
 	// create sliders
-	iterations = createSlider(1, 8, 6, 1);
+	iterations = createSlider(1, 8, 2, 1);
 	initialBranchLength = createSlider(2, 100, 20, 0);
 	initialThickness = createSlider(0.1, 5, 2, 0);
 	split = createSlider(0.01, PI, PI / 2, 0);
@@ -62,6 +62,11 @@ function draw(){
 	text("Split Angle", 10,75);
 	text("Leaf Size", 10,95);
 	text("Branches Per Split", 275,95);
+
+	text("Controls:", 600,35);
+	text("UP / DOWN:		  I / K", 700,35);
+	text("LEFT / RIGHT:	J / L", 700,55);
+	text("IN / OUT:	         U / O", 700,75);
 
 	for(var i = 0; i < viewer.meshes.length;++i){
 
