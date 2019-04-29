@@ -1,0 +1,3 @@
+For this final project I wanted to do something different. Usually I'll make a game so I thought of making a Tree Generator instead. I felt that it was more fun and challenging. I'm glad with the way it came out. I had a fun time making it and having a bit of a challenge. THREE.js was really interesting. I'm glad I had a chance to experiment with it. There's a lot of interesting stuff that you can use THREE.js for.
+
+Anyway, like I said, I'm very happy with what I did for the final project. I've learned a lot as well from this course so thank you.
